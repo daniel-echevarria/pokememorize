@@ -6,10 +6,13 @@ import pokemonNames from "../data/pokemonNames";
 import Card from "./Card";
 import Score from "./Score";
 
-const selectedFew = pokemonNames.
+const numCards = 16;
+const lowerCaseNames = pokemonNames.map((name) => name.toLowerCase());
+const selectedFew = _.shuffle(lowerCaseNames).slice(0, numCards);
+console.log(selectedFew);
 
 const Game = () => {
-  const [pokeOptions, setPokeOptions] = useState(pokemonNames);
+  const [pokeOptions, setPokeOptions] = useState(selectedFew);
   const [clicked, setClicked] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
   const [maxScore, setMaxScore] = useState(0);
@@ -43,7 +46,10 @@ const Game = () => {
 
   return (
     <>
-      <Score current={currentScore} max={maxScore} />
+      <header>
+        <h1>Pokememory</h1>
+        <Score current={currentScore} max={maxScore} />
+      </header>
       <div className="gameBoard">{pokemonList}</div>;
     </>
   );
