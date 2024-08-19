@@ -15,7 +15,6 @@ import { useState } from "react";
 
 const Card = ({ pokemonName, handleClick }) => {
   const [image, setImage] = useState("");
-  const [ability, setAbility] = useState("");
   const [name, setName] = useState("");
 
   useEffect(() => {
@@ -23,10 +22,8 @@ const Card = ({ pokemonName, handleClick }) => {
       const myData = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
       const jsonData = await myData.json();
       const pokeImage = jsonData.sprites.front_default;
-      const pokeAbility = jsonData.abilities[0].ability.name;
       const pokeName = jsonData.name;
       setImage(pokeImage);
-      setAbility(pokeAbility);
       setName(pokeName);
     }
     getPokemonInfo(pokemonName);
@@ -34,7 +31,7 @@ const Card = ({ pokemonName, handleClick }) => {
 
   return (
     <div className="card" onClick={handleClick}>
-      <img src={image} id={ability}></img>
+      <img src={image} id={name}></img>
       <p>{name}</p>
     </div>
   );
