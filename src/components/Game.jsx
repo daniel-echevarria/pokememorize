@@ -6,12 +6,11 @@ import pokemonNames from "../data/pokemonNames";
 import Card from "./Card";
 import Score from "./Score";
 
-const numCards = 12;
-const lowerCaseNames = pokemonNames.map((name) => name.toLowerCase());
-const selectedFew = _.shuffle(lowerCaseNames).slice(0, numCards);
-console.log(selectedFew);
-
 const Game = () => {
+  const numCards = 12;
+  const lowerCaseNames = pokemonNames.map((name) => name.toLowerCase());
+  const selectedFew = _.shuffle(lowerCaseNames).slice(0, numCards);
+
   const [pokeOptions, setPokeOptions] = useState(selectedFew);
   const [clicked, setClicked] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
@@ -45,13 +44,20 @@ const Game = () => {
   ));
 
   return (
-    <>
+    <main>
       <header>
-        <h1>Pokememory</h1>
+        <div>
+          <h1>Pokememory</h1>
+          <p>
+            Click on a card to catch the pokemon, but never catch the same
+            pokemon twice! Can you catch them all ?
+          </p>
+        </div>
         <Score current={currentScore} max={maxScore} />
       </header>
-      <div className="gameBoard">{pokemonList}</div>;
-    </>
+      <div className="gameBoard">{pokemonList}</div>
+      <footer>Pro Tip: Refresh the page to get new Pokemons to catch!</footer>
+    </main>
   );
 };
 

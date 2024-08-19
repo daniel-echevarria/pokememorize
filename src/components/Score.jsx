@@ -1,3 +1,5 @@
+import "../styles/score.css";
+
 const Score = ({ current, max }) => {
   return (
     <div className="score">
