@@ -1,12 +1,12 @@
 import _ from "lodash";
-import "../styles/Game.css";
+import "../index.css";
 import { useState } from "react";
 
 import pokemonNames from "../data/pokemonNames";
 import Card from "./Card";
 import Score from "./Score";
 
-const numCards = 16;
+const numCards = 12;
 const lowerCaseNames = pokemonNames.map((name) => name.toLowerCase());
 const selectedFew = _.shuffle(lowerCaseNames).slice(0, numCards);
 console.log(selectedFew);

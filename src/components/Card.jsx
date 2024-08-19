@@ -19,12 +19,22 @@ const Card = ({ pokemonName, handleClick }) => {
 
   useEffect(() => {
     async function getPokemonInfo(name) {
-      const myData = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
-      const jsonData = await myData.json();
-      const pokeImage = jsonData.sprites.front_default;
-      const pokeName = jsonData.name;
-      setImage(pokeImage);
-      setName(pokeName);
+      console.log(name);
+      try {
+        const myData = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+        const jsonData = await myData.json();
+        const pokeImage = jsonData.sprites.front_default;
+        const pokeName = jsonData.name;
+        setImage(pokeImage);
+        setName(pokeName);
+      } catch {
+        const myData = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+        const jsonData = await myData.json();
+        const pokeImage = jsonData.sprites.front_default;
+        const pokeName = jsonData.name;
+        setImage(pokeImage);
+        setName(pokeName);
+      }
     }
     getPokemonInfo(pokemonName);
   }, [pokemonName]);
