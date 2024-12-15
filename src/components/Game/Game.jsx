@@ -81,7 +81,7 @@ const Game = () => {
           />
         </div>
       </header>
-      {isGameOver && <p className="oops">Oooops!</p>}
+      {isGameOver && <div className="oops">Oooops!</div>}
       <Board pokeOptions={pokeOptions} handleClick={handleClick} />
       <footer>
         <div className="text-sm text-center p-2">
