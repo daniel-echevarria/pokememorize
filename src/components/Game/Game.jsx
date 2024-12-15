@@ -2,10 +2,10 @@ import _ from "lodash";
 import "./game.css";
 import { useEffect, useState } from "react";
 import pokemonNames from "../../data/pokemonNames";
-import Card from "../Board/Card";
 import Score from "../Score/Score";
 import Difficulty from "../Difficulty/Difficulty";
 import GameOverModal from "../GameOver/GameOverModal";
+import Board from "../Board/Board";
 
 const Game = () => {
   const [numCards, setNumCards] = useState(12);
@@ -51,10 +51,6 @@ const Game = () => {
     setClicked([]);
   };
 
-  const pokemonList = pokeOptions.map((name) => (
-    <Card key={name} pokemonName={name} handleClick={handleClick} />
-  ));
-
   const changeDifficulty = (e, num) => {
     setNumCards(num);
     setSelectedDifficulty(e.target.value);
@@ -82,7 +78,7 @@ const Game = () => {
           />
         </div>
       </header>
-      <div className="gameBoard">{pokemonList}</div>
+      <Board pokeOptions={pokeOptions} handleClick={handleClick} />
       <footer>
         <div className="text-sm text-center p-2">
           <p>&copy; 2024 Daniel Echevarria. All Rights Reserved.</p>
