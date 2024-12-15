@@ -57,15 +57,34 @@ const Game = () => {
           <h1>Pokememory</h1>
           <p>
             Click on a card to catch the pokemon, but never catch the same
-            pokemon twice! Can you catch them all ?
+            pokemon twice! <br /> Can you catch them all ?
           </p>
-          <DifficultyBtn
-            text={"Easy"}
-            numCards={8}
-            changeDifficulty={changeDifficulty}
-          />
         </div>
-        <Score current={currentScore} max={maxScore} />
+        <div>
+          <Score current={currentScore} max={maxScore} />
+          <div className="difficulty-btns">
+            <DifficultyBtn
+              text={"Easy"}
+              numCards={8}
+              changeDifficulty={changeDifficulty}
+            />
+            <DifficultyBtn
+              text={"Moderate"}
+              numCards={12}
+              changeDifficulty={changeDifficulty}
+            />
+            <DifficultyBtn
+              text={"Hard"}
+              numCards={16}
+              changeDifficulty={changeDifficulty}
+            />
+            <DifficultyBtn
+              text={"Extreme"}
+              numCards={24}
+              changeDifficulty={changeDifficulty}
+            />
+          </div>
+        </div>
       </header>
       <div className="gameBoard">{pokemonList}</div>
       <footer>Pro Tip: Refresh the page to get new Pokemons to catch!</footer>

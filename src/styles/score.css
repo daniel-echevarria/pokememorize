@@ -1,15 +1,16 @@
 .score {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   min-width: 200px;
   min-height: 50px;
   border-radius: 25px;
-  padding: 15px 30px;
+  padding: 15px 0px;
 }
 
 .score p {
+  margin: 2px;
   font-family: pokemon;
   font-size: large;
   letter-spacing: 2px;

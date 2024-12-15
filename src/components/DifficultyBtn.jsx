@@ -1,7 +1,13 @@
+import "../styles/difficultyBtn.css";
 const DifficultyBtn = ({ text, numCards, changeDifficulty }) => {
   return (
     <>
-      <button onClick={() => changeDifficulty(numCards)}>{text}</button>
+      <button
+        className="difficulty-btn"
+        onClick={() => changeDifficulty(numCards)}
+      >
+        {text}
+      </button>
     </>
   );
 };

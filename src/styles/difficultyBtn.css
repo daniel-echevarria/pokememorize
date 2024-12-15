@@ -1,0 +1,12 @@
+.difficulty-btn {
+  padding: 10px 8px;
+  border-radius: 10px;
+  font-family: arcade;
+}
+
+.difficulty-btns {
+  font-family: retro;
+  display: flex;
+  flex-direction: column;
+  /* gap: 5px; */
+}
