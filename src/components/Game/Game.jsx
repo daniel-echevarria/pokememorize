@@ -72,7 +72,6 @@ const Game = () => {
             but never catch the same pokemon twice! <br />
             Can you catch them all ?
           </p>
-          <p className="oops"> {isGameOver && "Oooops!"}</p>
         </div>
         <div className="score-difficulty">
           <Score current={currentScore} max={maxScore} />
@@ -82,6 +81,7 @@ const Game = () => {
           />
         </div>
       </header>
+      <p className="oops"> {isGameOver && "Oooops!"}</p>
       <Board pokeOptions={pokeOptions} handleClick={handleClick} />
       <footer>
         <div className="text-sm text-center p-2">
