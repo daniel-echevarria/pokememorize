@@ -14,6 +14,16 @@
   }
 }
 
+@keyframes gameOver {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 main {
   height: 100vh;
   display: flex;
@@ -49,7 +59,8 @@ header p {
   font-size: x-large;
   font-family: retro;
   color: red;
-  min-height: 30px;
+  min-height: 35px;
+  animation: gameOver 2s ease-in forwards;
 }
 
 .gameBoard {
