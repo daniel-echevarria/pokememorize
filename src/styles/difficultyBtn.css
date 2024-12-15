@@ -4,9 +4,12 @@
   font-family: arcade;
 }
 
-.difficulty-btns {
+.selected.difficulty-btn {
+  background-color: aqua;
+}
+
+.difficulty-section {
   font-family: retro;
   display: flex;
   flex-direction: column;
-  /* gap: 5px; */
 }

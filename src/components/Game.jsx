@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import pokemonNames from "../data/pokemonNames";
 import Card from "./Card";
 import Score from "./Score";
-import DifficultyBtn from "./DifficultyBtn";
+import Difficulty from "./Difficulty";
 
 const Game = () => {
   const [numCards, setNumCards] = useState(12);
@@ -12,6 +12,7 @@ const Game = () => {
   const [clicked, setClicked] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
   const [maxScore, setMaxScore] = useState(0);
+  const [selectedDifficulty, setSelectedDifficulty] = useState("Moderate");
 
   useEffect(() => {
     const selectedFew = _.shuffle(pokemonNames).slice(0, numCards);
@@ -47,8 +48,9 @@ const Game = () => {
     <Card key={name} pokemonName={name} handleClick={handleClick} />
   ));
 
-  const changeDifficulty = (num) => {
+  const changeDifficulty = (e, num) => {
     setNumCards(num);
+    setSelectedDifficulty(e.target.value);
   };
 
   return (
@@ -63,28 +65,10 @@ const Game = () => {
         </div>
         <div className="score-difficulty">
           <Score current={currentScore} max={maxScore} />
-          <div className="difficulty-btns">
-            <DifficultyBtn
-              text={"Easy"}
-              numCards={8}
-              changeDifficulty={changeDifficulty}
-            />
-            <DifficultyBtn
-              text={"Moderate"}
-              numCards={12}
-              changeDifficulty={changeDifficulty}
-            />
-            <DifficultyBtn
-              text={"Hard"}
-              numCards={16}
-              changeDifficulty={changeDifficulty}
-            />
-            <DifficultyBtn
-              text={"Extreme"}
-              numCards={24}
-              changeDifficulty={changeDifficulty}
-            />
-          </div>
+          <Difficulty
+            changeDifficulty={changeDifficulty}
+            selectedDifficulty={selectedDifficulty}
+          />
         </div>
       </header>
       <div className="gameBoard">{pokemonList}</div>

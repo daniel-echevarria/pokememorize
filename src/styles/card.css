@@ -31,5 +31,6 @@
 .card:active,
 .difficulty-btn:active {
   box-shadow: 0px 0px 30px 5px rgb(216, 66, 174);
+  background-color: aqua;
   transition: all 0.5;
 }

@@ -1,10 +1,11 @@
 import "../styles/difficultyBtn.css";
-const DifficultyBtn = ({ text, numCards, changeDifficulty }) => {
+const DifficultyBtn = ({ text, numCards, changeDifficulty, isSelected }) => {
   return (
     <>
       <button
-        className="difficulty-btn"
-        onClick={() => changeDifficulty(numCards)}
+        className={isSelected ? "selected difficulty-btn" : "difficulty-btn"}
+        onClick={(e) => changeDifficulty(e, numCards)}
+        value={text}
       >
         {text}
       </button>
