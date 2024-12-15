@@ -1,3 +1,19 @@
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translate(30%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 main {
   height: 100vh;
   display: flex;
@@ -70,8 +86,11 @@ footer {
   .card {
     flex: 1;
   }
-
   .score {
     padding: 5px 10px;
+  }
+
+  .score-difficulty {
+    display: flex;
   }
 }

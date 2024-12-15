@@ -61,7 +61,7 @@ const Game = () => {
             pokemon twice! <br /> Can you catch them all ?
           </p>
         </div>
-        <div>
+        <div className="score-difficulty">
           <Score current={currentScore} max={maxScore} />
           <div className="difficulty-btns">
             <DifficultyBtn
@@ -88,7 +88,11 @@ const Game = () => {
         </div>
       </header>
       <div className="gameBoard">{pokemonList}</div>
-      <footer>Pro Tip: Refresh the page to get new Pokemons to catch!</footer>
+      <footer>
+        <div className="text-sm text-center p-2">
+          <p>&copy; 2024 Daniel Echevarria. All Rights Reserved.</p>
+        </div>
+      </footer>
     </main>
   );
 };
