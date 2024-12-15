@@ -4,16 +4,20 @@ import { useEffect, useState } from "react";
 import pokemonNames from "../data/pokemonNames";
 import Card from "./Card";
 import Score from "./Score";
+import DifficultyBtn from "./DifficultyBtn";
 
 const Game = () => {
-  const numCards = 12;
-  const selectedFew = _.shuffle(pokemonNames).slice(0, numCards);
-  const normalizedSelection = selectedFew.map((name) => name.toLowerCase());
-
-  const [pokeOptions, setPokeOptions] = useState(normalizedSelection);
+  const [numCards, setNumCards] = useState(12);
+  const [pokeOptions, setPokeOptions] = useState([]);
   const [clicked, setClicked] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
   const [maxScore, setMaxScore] = useState(0);
+
+  useEffect(() => {
+    const selectedFew = _.shuffle(pokemonNames).slice(0, numCards);
+    const normalizedSelection = selectedFew.map((name) => name.toLowerCase());
+    setPokeOptions(normalizedSelection);
+  }, [numCards]);
 
   const handleMaxScore = () => {
     if (currentScore > maxScore) setMaxScore(currentScore);
@@ -42,6 +46,10 @@ const Game = () => {
     <Card key={name} pokemonName={name} handleClick={handleClick} />
   ));
 
+  const changeDifficulty = (num) => {
+    setNumCards(num);
+  };
+
   return (
     <main>
       <header>
@@ -51,6 +59,11 @@ const Game = () => {
             Click on a card to catch the pokemon, but never catch the same
             pokemon twice! Can you catch them all ?
           </p>
+          <DifficultyBtn
+            text={"Easy"}
+            numCards={8}
+            changeDifficulty={changeDifficulty}
+          />
         </div>
         <Score current={currentScore} max={maxScore} />
       </header>
