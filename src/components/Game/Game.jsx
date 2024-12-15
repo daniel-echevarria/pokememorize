@@ -23,6 +23,7 @@ const Game = () => {
     setCurrentScore(0);
   }, [numCards]);
 
+  // When user wins the level
   const playAgain = () => {
     setCurrentScore(0);
     setIsGameOver(false);
@@ -33,6 +34,7 @@ const Game = () => {
   };
 
   const handleClick = (e) => {
+    setIsGameOver(false);
     const clickedCardId = e.target.id;
     clicked.includes(clickedCardId)
       ? handleGameOver()
@@ -48,6 +50,7 @@ const Game = () => {
   const handleGameOver = () => {
     setIsGameOver(true);
     handleMaxScore();
+    setCurrentScore(0);
     setClicked([]);
   };
 
@@ -58,9 +61,9 @@ const Game = () => {
 
   return (
     <main>
-      {isGameOver && (
+      {/* {isGameOver && (
         <GameOverModal score={currentScore} playAgain={playAgain} />
-      )}
+      )} */}
       <header>
         <div>
           <h1>Pokememory</h1>
@@ -69,6 +72,7 @@ const Game = () => {
             but never catch the same pokemon twice! <br />
             Can you catch them all ?
           </p>
+          <p className="oops"> {isGameOver && "Oooops!"}</p>
         </div>
         <div className="score-difficulty">
           <Score current={currentScore} max={maxScore} />

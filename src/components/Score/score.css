@@ -4,13 +4,14 @@
   justify-content: center;
   min-width: 200px;
   min-height: 50px;
-  border-radius: 25px;
   padding: 15px 10px;
+  border-radius: 10px;
+  border: 2px solid black;
 }
 
 .score p {
   margin: 2px;
   font-family: pokemon;
-  font-size: large;
+  font-size: larger;
   letter-spacing: 2px;
 }
