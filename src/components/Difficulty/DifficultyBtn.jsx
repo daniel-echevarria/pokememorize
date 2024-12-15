@@ -1,4 +1,4 @@
-import "../styles/difficultyBtn.css";
+import "./difficultyBtn.css";
 const DifficultyBtn = ({ text, numCards, changeDifficulty, isSelected }) => {
   return (
     <>

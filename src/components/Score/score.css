@@ -1,12 +1,11 @@
 .score {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: center;
   min-width: 200px;
   min-height: 50px;
   border-radius: 25px;
-  padding: 15px 0px;
+  padding: 15px 10px;
 }
 
 .score p {

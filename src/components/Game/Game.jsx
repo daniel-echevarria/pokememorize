@@ -1,10 +1,11 @@
 import _ from "lodash";
-import "../index.css";
+import "./game.css";
 import { useEffect, useState } from "react";
-import pokemonNames from "../data/pokemonNames";
-import Card from "./Card";
-import Score from "./Score";
-import Difficulty from "./Difficulty";
+import pokemonNames from "../../data/pokemonNames";
+import Card from "../Board/Card";
+import Score from "../Score/Score";
+import Difficulty from "../Difficulty/Difficulty";
+import GameOverModal from "../GameOver/GameOverModal";
 
 const Game = () => {
   const [numCards, setNumCards] = useState(12);
@@ -13,6 +14,7 @@ const Game = () => {
   const [currentScore, setCurrentScore] = useState(0);
   const [maxScore, setMaxScore] = useState(0);
   const [selectedDifficulty, setSelectedDifficulty] = useState("Moderate");
+  const [isGameOver, setIsGameOver] = useState(false);
 
   useEffect(() => {
     const selectedFew = _.shuffle(pokemonNames).slice(0, numCards);
@@ -20,6 +22,11 @@ const Game = () => {
     setPokeOptions(normalizedSelection);
     setCurrentScore(0);
   }, [numCards]);
+
+  const playAgain = () => {
+    setCurrentScore(0);
+    setIsGameOver(false);
+  };
 
   const handleMaxScore = () => {
     if (currentScore > maxScore) setMaxScore(currentScore);
@@ -39,9 +46,9 @@ const Game = () => {
   };
 
   const handleGameOver = () => {
+    setIsGameOver(true);
     handleMaxScore();
     setClicked([]);
-    setCurrentScore(0);
   };
 
   const pokemonList = pokeOptions.map((name) => (
@@ -55,12 +62,16 @@ const Game = () => {
 
   return (
     <main>
+      {isGameOver && (
+        <GameOverModal score={currentScore} playAgain={playAgain} />
+      )}
       <header>
         <div>
           <h1>Pokememory</h1>
           <p>
-            Click on a card to catch the pokemon, but never catch the same
-            pokemon twice! <br /> Can you catch them all ?
+            Click on a card to catch the pokemon, <br />
+            but never catch the same pokemon twice! <br />
+            Can you catch them all ?
           </p>
         </div>
         <div className="score-difficulty">

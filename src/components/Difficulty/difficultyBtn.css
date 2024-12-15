@@ -1,4 +1,5 @@
-.difficulty-btn {
+.difficulty-btn,
+.game-over button {
   padding: 10px 8px;
   border-radius: 10px;
   font-family: arcade;

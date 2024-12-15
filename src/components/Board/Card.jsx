@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import "../styles/card.css";
+import "./card.css";
 import _ from "lodash";
 
 const Card = ({ pokemonName, handleClick }) => {

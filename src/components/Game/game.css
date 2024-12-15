@@ -59,17 +59,17 @@ footer {
 
 @font-face {
   font-family: "pokemon";
-  src: url("../assets/fonts/pocket-monk-font/PocketMonk-15ze.ttf");
+  src: url("../../assets/fonts/pocket-monk-font/PocketMonk-15ze.ttf");
 }
 
 @font-face {
   font-family: "arcade";
-  src: url("../assets/fonts/invasion2000/INVASION2000.TTF");
+  src: url("../../assets/fonts/invasion2000/INVASION2000.TTF");
 }
 
 @font-face {
   font-family: "retro";
-  src: url("../assets/fonts/classic.ttf");
+  src: url("../../assets/fonts/classic.ttf");
 }
 
 @media (max-width: 640px) {

@@ -1,4 +1,4 @@
-import "../styles/score.css";
+import "./score.css";
 
 const Score = ({ current, max }) => {
   return (
