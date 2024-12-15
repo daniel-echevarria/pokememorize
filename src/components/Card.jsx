@@ -29,10 +29,10 @@ const Card = ({ pokemonName, handleClick }) => {
   }, [pokemonName]);
 
   return (
-    <div className="card" onClick={handleClick}>
+    <button className="card" onClick={handleClick}>
       <img src={image} id={name} />
       <p>{_.startCase(name)}</p>
-    </div>
+    </button>
   );
 };
 

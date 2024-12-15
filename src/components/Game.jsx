@@ -17,6 +17,7 @@ const Game = () => {
     const selectedFew = _.shuffle(pokemonNames).slice(0, numCards);
     const normalizedSelection = selectedFew.map((name) => name.toLowerCase());
     setPokeOptions(normalizedSelection);
+    setCurrentScore(0);
   }, [numCards]);
 
   const handleMaxScore = () => {
