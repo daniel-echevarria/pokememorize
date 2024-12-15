@@ -9,7 +9,6 @@ const Card = ({ pokemonName, handleClick }) => {
 
   useEffect(() => {
     async function getPokemonInfo(name) {
-      console.log(name);
       try {
         const myData = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
         const jsonData = await myData.json();
@@ -31,7 +30,7 @@ const Card = ({ pokemonName, handleClick }) => {
 
   return (
     <div className="card" onClick={handleClick}>
-      <img src={image} id={name}></img>
+      <img src={image} id={name} />
       <p>{_.startCase(name)}</p>
     </div>
   );

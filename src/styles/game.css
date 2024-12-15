@@ -33,6 +33,7 @@ footer {
 
 .gameBoard {
   justify-content: center;
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   padding: 30px;
@@ -47,4 +48,24 @@ footer {
 @font-face {
   font-family: "arcade";
   src: url("../assets/fonts/invasion2000/INVASION2000.TTF");
+}
+
+@media (max-width: 640px) {
+  header {
+    flex-direction: column;
+  }
+  h1 {
+    font-size: 64px;
+  }
+  header p {
+    font-size: 18px;
+  }
+
+  .card {
+    flex: 1;
+  }
+
+  .score {
+    padding: 5px 10px;
+  }
 }

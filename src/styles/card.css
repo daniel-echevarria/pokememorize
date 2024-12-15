@@ -14,11 +14,18 @@
 }
 
 .card img {
-  border: 1px solid black;
+  border-bottom: 1px solid black;
   width: 100%;
   border-radius: 25px 25px 0px 0px;
 }
 
 .card:hover {
+  border: 2px solid rgb(216, 206, 66);
   box-shadow: 0px 0px 10px 5px rgb(216, 206, 66);
+  transform: scale(102%);
+}
+
+.card:active {
+  box-shadow: 0px 0px 30px 5px rgb(216, 66, 174);
+  transition: all 0.5;
 }

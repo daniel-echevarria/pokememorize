@@ -1,17 +1,16 @@
 import _ from "lodash";
 import "../index.css";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import pokemonNames from "../data/pokemonNames";
 import Card from "./Card";
 import Score from "./Score";
 
 const Game = () => {
   const numCards = 12;
-  const lowerCaseNames = pokemonNames.map((name) => name.toLowerCase());
-  const selectedFew = _.shuffle(lowerCaseNames).slice(0, numCards);
+  const selectedFew = _.shuffle(pokemonNames).slice(0, numCards);
+  const normalizedSelection = selectedFew.map((name) => name.toLowerCase());
 
-  const [pokeOptions, setPokeOptions] = useState(selectedFew);
+  const [pokeOptions, setPokeOptions] = useState(normalizedSelection);
   const [clicked, setClicked] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
   const [maxScore, setMaxScore] = useState(0);
