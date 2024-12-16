@@ -7,6 +7,7 @@
   padding: 15px 10px;
   border-radius: 10px;
   border: 2px solid black;
+  text-align: end;
 }
 
 .score p {

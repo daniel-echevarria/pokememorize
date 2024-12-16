@@ -5,7 +5,7 @@ import pokemonNames from "../../data/pokemonNames";
 import Score from "../Score/Score";
 import Difficulty from "../Difficulty/Difficulty";
 import Board from "../Board/Board";
-import GameOverModal from "../GameOver/GameOverModal";
+import LevelWonModal from "../LevelWonModal/LevelWonModal";
 
 const Game = () => {
   const [numCards, setNumCards] = useState(12);
@@ -18,7 +18,7 @@ const Game = () => {
   const [isGameWon, setIsGameWon] = useState(false);
 
   const levels = [
-    { text: "Easy", numCards: 2 },
+    { text: "Easy", numCards: 8 },
     { text: "Moderate", numCards: 12 },
     { text: "Hard", numCards: 16 },
     { text: "Extreme", numCards: 24 },
@@ -31,12 +31,6 @@ const Game = () => {
     setCurrentScore(0);
   }, [numCards]);
 
-  // When user wins the level
-  const playAgain = () => {
-    setIsGameWon(false);
-    handleGameOver();
-  };
-
   const handleMaxScore = () => {
     if (currentScore > maxScore) setMaxScore(currentScore);
   };
@@ -45,16 +39,17 @@ const Game = () => {
     setIsGameLost(false);
     const clickedCardId = e.target.id;
     clicked.includes(clickedCardId)
-      ? handleGameOver()
+      ? handleGameIsLost()
       : handleGameContinues(clickedCardId);
     setPokeOptions(_.shuffle(pokeOptions));
   };
 
+  const getCurrentLevel = levels.find((lvl) => {
+    return lvl.text === selectedDifficulty;
+  });
+
   const playerWonLevel = () => {
-    const currentLevel = levels.find((lvl) => {
-      return lvl.text === selectedDifficulty;
-    });
-    return currentLevel.numCards == currentScore + 1;
+    return getCurrentLevel.numCards == currentScore + 1;
   };
 
   const handleGameContinues = (clickedCardId) => {
@@ -63,10 +58,20 @@ const Game = () => {
     if (playerWonLevel()) setIsGameWon(true);
   };
 
-  const handleGameOver = () => {
+  const resetGame = () => {
     handleMaxScore();
     setCurrentScore(0);
     setClicked([]);
+  };
+
+  const handleGameIsLost = () => {
+    setIsGameLost(true);
+    resetGame();
+  };
+
+  const playAgain = () => {
+    setIsGameWon(false);
+    resetGame();
   };
 
   const changeDifficulty = (e, num) => {
@@ -77,7 +82,7 @@ const Game = () => {
   return (
     <main>
       {isGameWon && (
-        <GameOverModal score={currentScore} playAgain={playAgain} />
+        <LevelWonModal score={currentScore} playAgain={playAgain} />
       )}
       <header>
         <div>
@@ -89,7 +94,11 @@ const Game = () => {
           </p>
         </div>
         <div className="score-difficulty">
-          <Score current={currentScore} max={maxScore} />
+          <Score
+            current={currentScore}
+            max={maxScore}
+            levelMax={getCurrentLevel.numCards}
+          />
           <Difficulty
             changeDifficulty={changeDifficulty}
             selectedDifficulty={selectedDifficulty}

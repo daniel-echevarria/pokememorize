@@ -1,10 +1,14 @@
 import "./score.css";
 
-const Score = ({ current, max }) => {
+const Score = ({ current, max, levelMax }) => {
   return (
     <div className="score">
-      <p>Score: {current}</p>
-      <p>Max Score: {max}</p>
+      <p>
+        Score: {current}/{levelMax}
+      </p>
+      <p>
+        Max Score: {max}/{levelMax}
+      </p>
     </div>
   );
 };

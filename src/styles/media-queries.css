@@ -19,7 +19,7 @@
 
   .card {
     flex: 1;
-    /* animation: none; */
+    animation: none;
   }
 
   .score {
