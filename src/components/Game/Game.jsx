@@ -16,6 +16,7 @@ const Game = () => {
   const [selectedDifficulty, setSelectedDifficulty] = useState("Moderate");
   const [isGameLost, setIsGameLost] = useState(false);
   const [isGameWon, setIsGameWon] = useState(false);
+  const [playerWonAll, setPlayerWonAll] = useState(false);
 
   const levels = [
     { text: "Extra Easy", numCards: 4 },
@@ -53,10 +54,16 @@ const Game = () => {
     return getCurrentLevel.numCards == currentScore + 1;
   };
 
+  const handlePlayerWon = () => {
+    if (levels.indexOf(getCurrentLevel) + 1 === levels.length)
+      setPlayerWonAll(true);
+    setIsGameWon(true);
+  };
+
   const handleGameContinues = (clickedCardId) => {
     setCurrentScore(currentScore + 1);
     setClicked([...clicked, clickedCardId]);
-    if (playerWonLevel()) setIsGameWon(true);
+    if (playerWonLevel()) handlePlayerWon();
   };
 
   const resetGame = () => {
@@ -76,6 +83,11 @@ const Game = () => {
   };
 
   const playNextLevel = () => {
+    if (playerWonAll) {
+      setNumCards(120);
+      playAgain();
+      return;
+    }
     const currentLvlIndex = levels.indexOf(getCurrentLevel);
     const nextLevel = levels[currentLvlIndex + 1];
     setNumCards(nextLevel.numCards);
@@ -96,6 +108,7 @@ const Game = () => {
           score={currentScore}
           playAgain={playAgain}
           playNextLevel={playNextLevel}
+          playerWonAll={playerWonAll}
         />
       )}
       <header>
