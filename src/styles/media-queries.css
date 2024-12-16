@@ -28,6 +28,7 @@
 
   .score-difficulty {
     display: flex;
+    align-items: center;
     gap: 30px;
   }
 }
@@ -64,5 +65,15 @@
   .difficulty-btn,
   .score {
     flex: 1;
+  }
+
+  .game-over-card {
+    text-align: center;
+    font-size: small;
+    width: 80%;
+  }
+
+  .replay-btns {
+    flex-direction: column;
   }
 }

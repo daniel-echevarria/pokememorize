@@ -18,10 +18,11 @@ const Game = () => {
   const [isGameWon, setIsGameWon] = useState(false);
 
   const levels = [
+    { text: "Extra Easy", numCards: 4 },
     { text: "Easy", numCards: 8 },
     { text: "Moderate", numCards: 12 },
     { text: "Hard", numCards: 16 },
-    { text: "Extreme", numCards: 24 },
+    { text: "Extra Hard", numCards: 24 },
   ];
 
   useEffect(() => {

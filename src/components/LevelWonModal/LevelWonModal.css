@@ -17,10 +17,12 @@
 
 .game-over-card {
   background-color: antiquewhite;
-  padding: 20px 40px;
+  padding: 40px 80px;
   border-radius: 5px;
+  max-width: 600px;
 }
 
 .replay-btns {
   display: flex;
+  gap: 10px;
 }
