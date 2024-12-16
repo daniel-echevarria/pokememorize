@@ -25,11 +25,11 @@ const Game = () => {
     { text: "Extra Hard", numCards: 24 },
   ];
 
+  // Regive cards
   useEffect(() => {
     const selectedFew = _.shuffle(pokemonNames).slice(0, numCards);
     const normalizedSelection = selectedFew.map((name) => name.toLowerCase());
     setPokeOptions(normalizedSelection);
-    setCurrentScore(0);
   }, [numCards]);
 
   const handleMaxScore = () => {
@@ -76,10 +76,8 @@ const Game = () => {
   };
 
   const playNextLevel = () => {
-    const currentLevelIndex = levels.findIndex(
-      (level) => level === getCurrentLevel
-    );
-    const nextLevel = levels[currentLevelIndex + 1];
+    const currentLvlIndex = levels.indexOf(getCurrentLevel);
+    const nextLevel = levels[currentLvlIndex + 1];
     setNumCards(nextLevel.numCards);
     setSelectedDifficulty(nextLevel.text);
     playAgain();
@@ -88,6 +86,7 @@ const Game = () => {
   const changeDifficulty = (e, num) => {
     setNumCards(num);
     setSelectedDifficulty(e.target.value);
+    resetGame();
   };
 
   return (
@@ -124,9 +123,7 @@ const Game = () => {
       {isGameLost && <div className="lost"></div>}
       <Board pokeOptions={pokeOptions} handleClick={handleClick} />
       <footer>
-        <div className="text-sm text-center p-2">
-          <p>&copy; 2024 Daniel Echevarria. All Rights Reserved.</p>
-        </div>
+        <p>&copy; 2024 Daniel Echevarria. All Rights Reserved.</p>
       </footer>
     </main>
   );
