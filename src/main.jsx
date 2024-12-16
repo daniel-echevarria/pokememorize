@@ -4,6 +4,7 @@ import Game from "./components/Game/Game";
 import "./styles/animations.css";
 import "./styles/fonts.css";
 import "./styles/layout.css";
+import "./styles/media-queries.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

@@ -9,8 +9,3 @@
   display: flex;
   flex-direction: column;
 }
-
-.difficulty-btn {
-  font-family: arcade;
-  border-radius: 10px;
-}

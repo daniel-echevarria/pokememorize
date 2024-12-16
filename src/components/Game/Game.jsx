@@ -67,8 +67,8 @@ const Game = () => {
         <div>
           <h1>Pokememorize</h1>
           <p>
-            Click on a card to catch the pokemon, <br />
-            but never catch the same pokemon twice! <br />
+            Click on a card to catch the pokemon, but never catch the same
+            pokemon twice! <br />
             Can you catch them all ?
           </p>
         </div>
