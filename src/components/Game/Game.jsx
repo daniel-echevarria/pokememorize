@@ -74,6 +74,16 @@ const Game = () => {
     resetGame();
   };
 
+  const playNextLevel = () => {
+    const currentLevelIndex = levels.findIndex(
+      (level) => level === getCurrentLevel
+    );
+    const nextLevel = levels[currentLevelIndex + 1];
+    setNumCards(nextLevel.numCards);
+    setSelectedDifficulty(nextLevel.text);
+    playAgain();
+  };
+
   const changeDifficulty = (e, num) => {
     setNumCards(num);
     setSelectedDifficulty(e.target.value);
@@ -82,7 +92,11 @@ const Game = () => {
   return (
     <main>
       {isGameWon && (
-        <LevelWonModal score={currentScore} playAgain={playAgain} />
+        <LevelWonModal
+          score={currentScore}
+          playAgain={playAgain}
+          playNextLevel={playNextLevel}
+        />
       )}
       <header>
         <div>
