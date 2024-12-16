@@ -3,7 +3,7 @@ import "./score.css";
 const Score = ({ current, max }) => {
   return (
     <div className="score">
-      <p>Current Score: {current}</p>
+      <p>Score: {current}</p>
       <p>Max Score: {max}</p>
     </div>
   );

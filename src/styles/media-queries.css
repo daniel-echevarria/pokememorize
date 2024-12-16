@@ -19,7 +19,7 @@
 
   .card {
     flex: 1;
-    animation: none;
+    /* animation: none; */
   }
 
   .score {
@@ -43,11 +43,21 @@
     padding: 0px 10px;
   }
 
+  .score {
+    position: fixed;
+    display: flex;
+    align-items: end;
+    background-color: white;
+    bottom: 0px;
+    right: 0px;
+    padding: 0px;
+    font-size: small;
+  }
+
   .score-difficulty {
     display: flex;
     flex-direction: column;
     gap: 0px;
-    border: 1px solid black;
     width: 100%;
   }
 
