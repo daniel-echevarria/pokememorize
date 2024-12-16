@@ -1,18 +1,24 @@
 import DifficultyBtn from "./DifficultyBtn";
 
-const Difficulty = ({ changeDifficulty, selectedDifficulty, levels }) => {
+const Difficulty = ({
+  changeCurrentLevelId,
+  currentLevelId,
+  levels,
+  playerWonAll,
+}) => {
   return (
     <div className="difficulty-section">
       {levels.map((level) => {
-        if (level.hidden) return;
+        if (level.hidden && !playerWonAll) return;
         return (
           <>
             <DifficultyBtn
-              key={level.text}
+              key={level.id}
+              levelId={level.id}
               text={level.text}
               numCards={level.numCards}
-              changeDifficulty={changeDifficulty}
-              isSelected={selectedDifficulty === level.text}
+              changeCurrentLevelId={changeCurrentLevelId}
+              isSelected={currentLevelId == level.id}
             />
           </>
         );

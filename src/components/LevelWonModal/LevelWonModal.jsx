@@ -1,5 +1,5 @@
 import "./LevelWonModal.css";
-const LevelWonModal = ({ score, playAgain, playNextLevel, playerWonAll }) => {
+const LevelWonModal = ({ playAgain, playNextLevel, playerWonAll }) => {
   const WonThemAllText = () => {
     return (
       <>
@@ -15,10 +15,7 @@ const LevelWonModal = ({ score, playAgain, playNextLevel, playerWonAll }) => {
   const NormalText = () => {
     return (
       <>
-        <p>
-          {`Whaou! You reached the maximum score on this level!
-    You caught ${score} pokemons out of ${score}`}
-        </p>
+        <p>Whaou! You reached the maximum score on this level!</p>
         <p>Well Done!</p>
         <p>Up for a challenge ? Try the next level!</p>
       </>
@@ -31,11 +28,7 @@ const LevelWonModal = ({ score, playAgain, playNextLevel, playerWonAll }) => {
         {playerWonAll ? <WonThemAllText /> : <NormalText />}
         <div className="replay-btns">
           <button onClick={playAgain}>Play Again</button>
-          {playerWonAll ? (
-            <button onClick={playNextLevel}>Impossible Level</button>
-          ) : (
-            <button onClick={playNextLevel}>Next Level</button>
-          )}
+          {!playerWonAll && <button onClick={playNextLevel}>Next Level</button>}
         </div>
       </div>
     </div>

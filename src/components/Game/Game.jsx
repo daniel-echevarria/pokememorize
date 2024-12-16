@@ -7,31 +7,37 @@ import Difficulty from "../Difficulty/Difficulty";
 import Board from "../Board/Board";
 import LevelWonModal from "../LevelWonModal/LevelWonModal";
 
+const levels = [
+  { id: 1, text: "Extra Easy", numCards: 4 },
+  { id: 2, text: "Easy", numCards: 8 },
+  { id: 3, text: "Moderate", numCards: 12 },
+  { id: 4, text: "Hard", numCards: 16 },
+  { id: 5, text: "Extra Hard", numCards: 2 },
+  { id: 6, text: "Impossible", numCards: 120, hidden: true },
+];
+
 const Game = () => {
-  const [numCards, setNumCards] = useState(12);
+  const [currentLevelId, setCurrentLevelId] = useState(3);
   const [pokeOptions, setPokeOptions] = useState([]);
   const [clicked, setClicked] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
   const [maxScore, setMaxScore] = useState(0);
-  const [selectedDifficulty, setSelectedDifficulty] = useState("Moderate");
   const [isGameLost, setIsGameLost] = useState(false);
   const [isGameWon, setIsGameWon] = useState(false);
   const [playerWonAll, setPlayerWonAll] = useState(false);
 
-  let levels = [
-    { text: "Extra Easy", numCards: 4 },
-    { text: "Easy", numCards: 8 },
-    { text: "Moderate", numCards: 12 },
-    { text: "Hard", numCards: 16 },
-    { text: "Extra Hard", numCards: 2 },
-    { text: "Impossible", numCards: 120, hidden: true },
-  ];
+  const getCurrentLevel = levels.find((lvl) => {
+    return lvl.id == currentLevelId;
+  });
 
   useEffect(() => {
-    const selectedFew = _.shuffle(pokemonNames).slice(0, numCards);
+    const selectedFew = _.shuffle(pokemonNames).slice(
+      0,
+      getCurrentLevel.numCards
+    );
     const normalizedSelection = selectedFew.map((name) => name.toLowerCase());
     setPokeOptions(normalizedSelection);
-  }, [numCards]);
+  }, [getCurrentLevel.numCards]);
 
   const handleMaxScore = () => {
     if (currentScore > maxScore) setMaxScore(currentScore);
@@ -45,10 +51,6 @@ const Game = () => {
       : handleGameContinues(clickedCardId);
     setPokeOptions(_.shuffle(pokeOptions));
   };
-
-  const getCurrentLevel = levels.find((lvl) => {
-    return lvl.text === selectedDifficulty;
-  });
 
   const playerWonLevel = () => {
     return getCurrentLevel.numCards == currentScore + 1;
@@ -86,14 +88,12 @@ const Game = () => {
   const playNextLevel = () => {
     const currentLvlIndex = levels.indexOf(getCurrentLevel);
     const nextLevel = levels[currentLvlIndex + 1];
-    setNumCards(nextLevel.numCards);
-    setSelectedDifficulty(nextLevel.text);
+    setCurrentLevelId(nextLevel.text);
     playAgain();
   };
 
-  const changeDifficulty = (e, num) => {
-    setNumCards(num);
-    setSelectedDifficulty(e.target.value);
+  const changeCurrentLevelId = (id) => {
+    setCurrentLevelId(id);
     resetGame();
   };
 
@@ -101,7 +101,6 @@ const Game = () => {
     <main>
       {isGameWon && (
         <LevelWonModal
-          score={currentScore}
           playAgain={playAgain}
           playNextLevel={playNextLevel}
           playerWonAll={playerWonAll}
@@ -123,9 +122,10 @@ const Game = () => {
             levelMax={getCurrentLevel.numCards}
           />
           <Difficulty
-            changeDifficulty={changeDifficulty}
-            selectedDifficulty={selectedDifficulty}
+            changeCurrentLevelId={changeCurrentLevelId}
+            currentLevelId={currentLevelId}
             levels={levels}
+            playerWonAll={playerWonAll}
           />
         </div>
       </header>
