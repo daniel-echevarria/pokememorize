@@ -65,7 +65,7 @@ const Game = () => {
       )} */}
       <header>
         <div>
-          <h1>Pokememory</h1>
+          <h1>Pokememorize</h1>
           <p>
             Click on a card to catch the pokemon, <br />
             but never catch the same pokemon twice! <br />
