@@ -1,3 +1,20 @@
+@media (hover: hover) and (pointer: fine) {
+  .card:hover,
+  .difficulty-btn:hover,
+  .game-over button:hover {
+    border: 2px solid rgb(216, 206, 66);
+    box-shadow: 0px 0px 10px 5px rgb(216, 206, 66);
+    transform: scale(102%);
+  }
+
+  .card:active,
+  .difficulty-btn:active .game-over button:active {
+    box-shadow: 0px 0px 30px 5px rgb(216, 66, 174);
+    background-color: aqua;
+    transition: all 0.5;
+  }
+}
+
 .card,
 .difficulty-btn,
 .game-over button {
@@ -13,7 +30,7 @@
   letter-spacing: 2px;
   cursor: pointer;
   box-shadow: 5px 5px 5px 0px black;
-  /* animation: slideIn 0.4s ease-in; */
+  animation: slideIn 0.4s ease-in;
 }
 
 .difficulty-btn {
@@ -25,19 +42,4 @@
   border-bottom: 1px solid black;
   width: 100%;
   border-radius: 25px 25px 0px 0px;
-}
-
-.card:hover,
-.difficulty-btn:hover,
-.game-over button:hover {
-  border: 2px solid rgb(216, 206, 66);
-  box-shadow: 0px 0px 10px 5px rgb(216, 206, 66);
-  transform: scale(102%);
-}
-
-.card:active,
-.difficulty-btn:active .game-over button:active {
-  box-shadow: 0px 0px 30px 5px rgb(216, 66, 174);
-  background-color: aqua;
-  transition: all 0.5;
 }

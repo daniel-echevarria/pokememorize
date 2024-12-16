@@ -1,103 +1,3 @@
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-
-  50% {
-    opacity: 0.5;
-    transform: translate(30%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes gameOver {
-  from {
-    opacity: 0;
-    /* transform: translateY(0); */
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-    display: none;
-    /* transform: translateX(-100vh); */
-  }
-}
-
-main {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-h1 {
-  font-family: "pokemon";
-  font-size: 72px;
-  /* margin: 0px; */
-}
-
-header {
-  margin: 0px 50px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-header p {
-  font-family: retro;
-  max-width: 600px;
-  font-size: 16px;
-}
-
-.oops {
-  position: fixed;
-  background-color: red;
-  color: red;
-  width: 100%;
-  height: 100%;
-  animation: gameOver 0.5s ease-out forwards;
-}
-
-.gameBoard {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 30px;
-  gap: 30px;
-}
-
-footer {
-  min-height: 50px;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-@font-face {
-  font-family: "pokemon";
-  src: url("../../assets/fonts/pocket-monk-font/PocketMonk-15ze.ttf");
-}
-
-@font-face {
-  font-family: "arcade";
-  src: url("../../assets/fonts/invasion2000/INVASION2000.TTF");
-}
-
-@font-face {
-  font-family: "retro";
-  src: url("../../assets/fonts/classic.ttf");
-}
-
 @media (max-width: 640px) {
   header {
     flex-direction: column;
@@ -113,6 +13,7 @@ footer {
 
   .card {
     flex: 1;
+    animation: none;
   }
 
   .score {

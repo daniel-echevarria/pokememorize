@@ -1,0 +1,42 @@
+main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h1 {
+  font-family: "pokemon";
+  font-size: 72px;
+  /* margin: 0px; */
+}
+
+header {
+  margin: 0px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+header p {
+  font-family: retro;
+  max-width: 600px;
+  font-size: 16px;
+}
+
+.gameBoard {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+  gap: 30px;
+}
+
+footer {
+  min-height: 50px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import pokemonNames from "../../data/pokemonNames";
 import Score from "../Score/Score";
 import Difficulty from "../Difficulty/Difficulty";
-import GameOverModal from "../GameOver/GameOverModal";
 import Board from "../Board/Board";
 
 const Game = () => {
@@ -81,7 +80,7 @@ const Game = () => {
           />
         </div>
       </header>
-      {isGameOver && <div className="oops">Oooops!</div>}
+      {isGameOver && <div className="lost"></div>}
       <Board pokeOptions={pokeOptions} handleClick={handleClick} />
       <footer>
         <div className="text-sm text-center p-2">
