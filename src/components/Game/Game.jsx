@@ -18,15 +18,15 @@ const Game = () => {
   const [isGameWon, setIsGameWon] = useState(false);
   const [playerWonAll, setPlayerWonAll] = useState(false);
 
-  const levels = [
+  let levels = [
     { text: "Extra Easy", numCards: 4 },
     { text: "Easy", numCards: 8 },
     { text: "Moderate", numCards: 12 },
     { text: "Hard", numCards: 16 },
-    { text: "Extra Hard", numCards: 24 },
+    { text: "Extra Hard", numCards: 2 },
+    { text: "Impossible", numCards: 120, hidden: true },
   ];
 
-  // Regive cards
   useEffect(() => {
     const selectedFew = _.shuffle(pokemonNames).slice(0, numCards);
     const normalizedSelection = selectedFew.map((name) => name.toLowerCase());
@@ -55,8 +55,9 @@ const Game = () => {
   };
 
   const handlePlayerWon = () => {
-    if (levels.indexOf(getCurrentLevel) + 1 === levels.length)
+    if (levels.indexOf(getCurrentLevel) === levels.length - 2) {
       setPlayerWonAll(true);
+    }
     setIsGameWon(true);
   };
 
@@ -83,11 +84,6 @@ const Game = () => {
   };
 
   const playNextLevel = () => {
-    if (playerWonAll) {
-      setNumCards(120);
-      playAgain();
-      return;
-    }
     const currentLvlIndex = levels.indexOf(getCurrentLevel);
     const nextLevel = levels[currentLvlIndex + 1];
     setNumCards(nextLevel.numCards);
