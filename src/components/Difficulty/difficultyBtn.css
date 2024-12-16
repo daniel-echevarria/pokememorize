@@ -1,17 +1,16 @@
-.difficulty-btn,
-.game-over button {
-  padding: 10px 8px;
-  border-radius: 10px;
-  font-family: arcade;
-}
-
 .selected.difficulty-btn {
   background-color: aqua;
-  transform: scale(98%);
+  /* transform: scaleY(95%); */
+  /* box-shadow: inset 5px 5px 5px 0px rgba(0, 0, 0, 0.3); */
 }
 
 .difficulty-section {
   font-family: retro;
   display: flex;
   flex-direction: column;
+}
+
+.difficulty-btn {
+  font-family: arcade;
+  border-radius: 10px;
 }
