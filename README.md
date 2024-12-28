@@ -1,6 +1,6 @@
 # Pokememorize 🧠🃏
 
-Pokememorize is a thrilling memory game with a twist!
+Pokememorize is a thrilling memory game with a twist!  
 Test your focus and strategy as you try to avoid clicking the same Pokémon card twice.
 
 ## 🌟 Features
