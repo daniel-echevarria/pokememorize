@@ -21,3 +21,6 @@ Test your focus and strategy as you try to avoid clicking the same Pokémon card
 - **API Integration:** Pokémon API for fetching Pokémon data and images.
 - **Styling:** CSS for responsive and clean visuals.
 - **Logic:** JavaScript for managing the unique gameplay mechanics.
+
+## 🎢 Live Demo
+Experience the game live and test your memory skills 😉: [Play Pokememorize Now!](https://pokememorize.netlify.app/)  
